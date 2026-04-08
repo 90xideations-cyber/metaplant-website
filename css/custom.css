@@ -1,0 +1,92 @@
+/* METAPLANT — mobile nav & details */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+.mobile-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(12, 14, 18, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+body.nav-open .mobile-backdrop {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobile-backdrop {
+    display: none !important;
+  }
+}
+
+/* Mobile slide-in nav */
+@media (max-width: 767px) {
+  .site-nav-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(100%, 320px);
+    height: 100vh;
+    z-index: 45;
+    background: rgba(17, 19, 24, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 5rem 1.5rem 2rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    border-left: 1px solid rgba(70, 72, 77, 0.15);
+    pointer-events: none;
+  }
+
+  body.nav-open .site-nav-panel {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .site-nav-panel > a {
+    display: block;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(70, 72, 77, 0.12);
+  }
+
+  .site-nav-panel .nav-cta-wrap {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .site-nav-panel .nav-cta-wrap button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-nav-panel {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    transform: none !important;
+    gap: 2.5rem;
+  }
+
+  .site-nav-panel > a {
+    padding: 0;
+    border: none;
+    display: inline;
+  }
+}
